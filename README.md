@@ -18,9 +18,14 @@ Copy the desired skill folder into your project's `.claude/commands/` or equival
 ```
 coding/                     # Application development skills
   python-hex-clean/         # Python + FastAPI Clean Architecture
+  fastapi-patterns/         # Advanced FastAPI patterns
+  pydantic-patterns/        # Pydantic v2 patterns
+  langgraph-agent/          # LangGraph agent development
+  prompt-engineering/       # Anthropic SDK / prompt design
   skill-creator/            # Skill authoring, testing, and optimization
 platform-engineering/       # Infrastructure / DevOps skills
   aws-cli/                  # AWS CLI v2 best practices
+  docker-compose/           # Docker Compose for local dev
 superpowers/                # Workflow and process skills (from Superpowers plugin)
   brainstorming/
   dispatching-parallel-agents/
@@ -35,6 +40,10 @@ superpowers/                # Workflow and process skills (from Superpowers plug
 | Skill | Description |
 |-------|-------------|
 | [`python-hex-clean`](coding/python-hex-clean/SKILL.md) | Python + FastAPI hexagonal/clean architecture with Google Style Guide |
+| [`fastapi-patterns`](coding/fastapi-patterns/SKILL.md) | Advanced FastAPI — DI, middleware, WebSockets, security, testing |
+| [`pydantic-patterns`](coding/pydantic-patterns/SKILL.md) | Pydantic v2 — validators, discriminated unions, custom types, serialization |
+| [`langgraph-agent`](coding/langgraph-agent/SKILL.md) | LangGraph agents — StateGraph, checkpointing, human-in-the-loop, multi-agent |
+| [`prompt-engineering`](coding/prompt-engineering/SKILL.md) | Anthropic SDK — prompt caching, tool use, structured output, batch API |
 | [`skill-creator`](coding/skill-creator/SKILL.md) | Create, test, benchmark, and optimize skills with eval framework |
 
 ### Platform Engineering
@@ -42,6 +51,7 @@ superpowers/                # Workflow and process skills (from Superpowers plug
 | Skill | Description |
 |-------|-------------|
 | [`aws-cli`](platform-engineering/aws-cli/SKILL.md) | AWS CLI v2 — command structure, credentials, JMESPath, pagination |
+| [`docker-compose`](platform-engineering/docker-compose/SKILL.md) | Docker Compose — multi-service dev environments, healthchecks, profiles |
 
 ### Superpowers (Workflow & Process)
 
