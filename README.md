@@ -44,6 +44,8 @@ superpowers/                # Workflow and process skills (from Superpowers plug
 | [`pydantic-patterns`](coding/pydantic-patterns/SKILL.md) | Pydantic v2 — validators, discriminated unions, custom types, serialization |
 | [`langgraph-agent`](coding/langgraph-agent/SKILL.md) | LangGraph agents — StateGraph, checkpointing, human-in-the-loop, multi-agent |
 | [`prompt-engineering`](coding/prompt-engineering/SKILL.md) | Anthropic SDK — prompt caching, tool use, structured output, batch API |
+| [`dockerfile-instructions`](coding/dockerfile-instructions/SKILL.md) | Dockerfiles — multi-stage, BuildKit, multi-arch, distroless, per-language templates |
+| [`create-makefiles`](coding/create-makefiles/SKILL.md) | Makefiles — safe defaults, self-documenting help, per-language templates |
 | [`skill-creator`](coding/skill-creator/SKILL.md) | Create, test, benchmark, and optimize skills with eval framework |
 
 ### Platform Engineering
@@ -52,6 +54,7 @@ superpowers/                # Workflow and process skills (from Superpowers plug
 |-------|-------------|
 | [`aws-cli`](platform-engineering/aws-cli/SKILL.md) | AWS CLI v2 — command structure, credentials, JMESPath, pagination |
 | [`docker-compose`](platform-engineering/docker-compose/SKILL.md) | Docker Compose — multi-service dev environments, healthchecks, profiles |
+| [`github-actions`](platform-engineering/github-actions/SKILL.md) | GitHub Actions — CI/CD, OIDC, supply-chain security, SLSA Build L3, attestations |
 
 ### Superpowers (Workflow & Process)
 
