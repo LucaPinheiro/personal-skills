@@ -1,6 +1,11 @@
 ---
 name: executing-plans
 description: Use when you have a written implementation plan to execute in a separate session with review checkpoints
+license: BSD-3-Clause
+compatibility: opencode
+metadata:
+  domain: workflow
+  category: execution
 ---
 
 # Executing Plans

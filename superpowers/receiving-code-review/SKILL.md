@@ -1,6 +1,11 @@
 ---
 name: receiving-code-review
 description: Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and verification, not performative agreement or blind implementation
+license: BSD-3-Clause
+compatibility: opencode
+metadata:
+  domain: workflow
+  category: code-review
 ---
 
 # Code Review Reception

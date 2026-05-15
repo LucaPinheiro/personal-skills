@@ -1,6 +1,11 @@
 ---
 name: subagent-driven-development
 description: Use when executing implementation plans with independent tasks in the current session
+license: BSD-3-Clause
+compatibility: opencode
+metadata:
+  domain: workflow
+  category: orchestration
 ---
 
 # Subagent-Driven Development

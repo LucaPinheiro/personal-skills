@@ -1,6 +1,11 @@
 ---
 name: requesting-code-review
 description: Use when completing tasks, implementing major features, or before merging to verify work meets requirements
+license: BSD-3-Clause
+compatibility: opencode
+metadata:
+  domain: workflow
+  category: code-review
 ---
 
 # Requesting Code Review

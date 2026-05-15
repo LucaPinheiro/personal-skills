@@ -1,6 +1,11 @@
 ---
 name: dispatching-parallel-agents
 description: Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies
+license: BSD-3-Clause
+compatibility: opencode
+metadata:
+  domain: workflow
+  category: orchestration
 ---
 
 # Dispatching Parallel Agents

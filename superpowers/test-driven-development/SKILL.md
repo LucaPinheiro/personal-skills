@@ -1,6 +1,11 @@
 ---
 name: test-driven-development
 description: Use when implementing any feature or bugfix, before writing implementation code
+license: BSD-3-Clause
+compatibility: opencode
+metadata:
+  domain: workflow
+  category: testing
 ---
 
 # Test-Driven Development (TDD)

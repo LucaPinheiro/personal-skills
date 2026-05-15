@@ -1,6 +1,11 @@
 ---
 name: systematic-debugging
 description: Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes
+license: BSD-3-Clause
+compatibility: opencode
+metadata:
+  domain: workflow
+  category: debugging
 ---
 
 # Systematic Debugging
