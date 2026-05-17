@@ -2,13 +2,14 @@
 name: obsidian-brain
 description: >-
   Use when setting up an Obsidian vault as an LLM-maintained knowledge base for a project.
-  Scaffolds the full directory structure, generates operational sub-skills (ingest, query, lint,
-  cross-link, status, export) inside the vault, and writes an AGENTS.md that teaches any AI
-  coding agent how and when to use each operation. Supports creating new vaults or adding
-  projects to existing ones. Triggers on — "create a brain", "obsidian wiki", "knowledge base
-  for project", "LLM wiki", "vault setup", "brain para projeto", "criar brain", "adicionar
-  jornada", "novo projeto no vault", or any request to set up a structured knowledge base
-  backed by Obsidian.
+  Scaffolds the full directory structure, generates 8 operational sub-skills (ingest, query, lint,
+  cross-link, status, export, context, bridge) inside the vault, and writes an AGENTS.md that
+  teaches any AI coding agent how and when to use each operation. Features typed semantic relations,
+  auto-generated compass files for fast orientation, and code-KB bridge for bidirectional knowledge
+  flow. Supports creating new vaults or adding projects to existing ones. Triggers on — "create a
+  brain", "obsidian wiki", "knowledge base for project", "LLM wiki", "vault setup", "brain para
+  projeto", "criar brain", "adicionar jornada", "novo projeto no vault", "connect code to KB",
+  "link project to vault", or any request to set up a structured knowledge base backed by Obsidian.
 license: BSD-3-Clause
 compatibility: opencode
 metadata:
@@ -76,16 +77,19 @@ Generate the full structure. If the vault already exists, only add the new proje
 <vault-path>/
 ├── AGENTS.md                    # Schema — how agents operate on this vault
 ├── _meta/
-│   ├── skills/                  # Operational sub-skills
+│   ├── skills/                  # Operational sub-skills (8 total)
 │   │   ├── ingest.md
 │   │   ├── query.md
 │   │   ├── lint.md
 │   │   ├── cross-link.md
 │   │   ├── status.md
-│   │   └── export.md
-│   └── taxonomy.md              # Controlled vocabulary (tags, entity types)
+│   │   ├── export.md
+│   │   ├── context.md           # Compass file generator
+│   │   └── bridge.md            # Code ↔ KB connector
+│   └── taxonomy.md              # Controlled vocabulary (tags, entity types, relation types)
 ├── projects/
 │   └── <project-name>/
+│       ├── _context.md          # Auto-generated compass (25-35 lines, ~1000 tokens)
 │       ├── raw/                 # Drop sources here
 │       │   └── .gitkeep
 │       ├── wiki/                # LLM-generated pages
@@ -187,6 +191,18 @@ Adapt the initial taxonomy based on domain:
 - `stakeholder` — teams, roles, people
 - `decision` — architectural or business decisions with rationale
 
+## Relation Types
+- `depends_on` — requires another entity to function
+- `implements` — realizes a business rule, spec, or requirement
+- `extends` — builds upon or adds to another entity
+- `contradicts` — conflicts with another claim or page (flag for resolution)
+- `related_to` — general association (use when no specific type fits)
+- `part_of` — component or subset of a larger entity
+- `used_by` — consumed or referenced by another entity
+- `supersedes` — replaces an older version or decision
+- `governs` — business rule that controls behavior of an entity
+- `validates` — checks or enforces constraints on another entity
+
 ## Tags
 - `#status/active` `#status/deprecated` `#status/proposed`
 - `#confidence/high` `#confidence/medium` `#confidence/low`
@@ -203,6 +219,19 @@ Adapt the initial taxonomy based on domain:
 - `method` — techniques, algorithms, approaches
 - `dataset` — datasets, benchmarks
 - `finding` — key results, claims (with confidence)
+
+## Relation Types
+- `depends_on` — requires another entity to function
+- `implements` — realizes a method or approach
+- `extends` — builds upon or adds to another entity
+- `contradicts` — conflicts with another claim or page
+- `related_to` — general association
+- `part_of` — component or subset
+- `used_by` — consumed or referenced by another entity
+- `supersedes` — replaces an older version
+- `cites` — references another paper or finding as evidence
+- `refutes` — provides evidence against a claim
+- `replicates` — reproduces results from another study
 
 ## Tags
 - `#status/confirmed` `#status/disputed` `#status/replicated`
@@ -221,6 +250,18 @@ Adapt the initial taxonomy based on domain:
 - `dependency` — libraries, frameworks, external services
 - `adr` — architecture decision records
 
+## Relation Types
+- `depends_on` — requires another entity to function
+- `implements` — realizes a pattern, spec, or ADR
+- `extends` — builds upon or adds to another entity
+- `contradicts` — conflicts with another claim or page
+- `related_to` — general association
+- `part_of` — component or subset
+- `used_by` — consumed or referenced by another entity
+- `supersedes` — replaces an older version
+- `calls` — service-to-service or API invocation
+- `deploys_to` — runs on a specific infrastructure target
+
 ## Tags
 - `#status/active` `#status/deprecated` `#status/planned`
 - `#severity/critical` `#severity/high` `#severity/medium` `#severity/low`
@@ -237,6 +278,18 @@ Adapt the initial taxonomy based on domain:
 - `insight` — realizations, connections
 - `resource` — books, courses, tools
 - `person` — mentors, collaborators
+
+## Relation Types
+- `depends_on` — requires another entity to function
+- `implements` — realizes a goal or habit
+- `extends` — builds upon or adds to another entity
+- `contradicts` — conflicts with another claim or page
+- `related_to` — general association
+- `part_of` — component or subset
+- `used_by` — consumed or referenced by another entity
+- `supersedes` — replaces an older version
+- `inspires` — motivated by or inspired from another entity
+- `supports` — helps achieve or maintain another entity
 
 ## Tags
 - `#area/health` `#area/career` `#area/learning` `#area/relationships`
@@ -269,18 +322,21 @@ Read each from:
 - `references/cross-link.md` → `_meta/skills/cross-link.md`
 - `references/status.md` → `_meta/skills/status.md`
 - `references/export.md` → `_meta/skills/export.md`
+- `references/context.md` → `_meta/skills/context.md`
+- `references/bridge.md` → `_meta/skills/bridge.md`
 
 ## Post-Setup Checklist
 
 After scaffolding, verify:
 
-- [ ] `AGENTS.md` exists at vault root and references all 6 skills
-- [ ] `_meta/skills/` contains all 6 `.md` files
-- [ ] `_meta/taxonomy.md` matches the chosen domain
-- [ ] `projects/<name>/` has `raw/`, `wiki/` (with subdirs), `output/`, `index.md`, `log.md`
+- [ ] `AGENTS.md` exists at vault root and references all 8 skills
+- [ ] `_meta/skills/` contains all 8 `.md` files (ingest, query, lint, cross-link, status, export, context, bridge)
+- [ ] `_meta/taxonomy.md` matches the chosen domain (includes Relation Types section)
+- [ ] `projects/<name>/` has `_context.md`, `raw/`, `wiki/` (with subdirs), `output/`, `index.md`, `log.md`
 - [ ] Global `index.md` lists the new project
 - [ ] Global `log.md` has the setup entry
 - [ ] No existing files were overwritten
+- [ ] `_context.md` was generated for the new project (even if minimal for a fresh project)
 
 Then tell the user:
 

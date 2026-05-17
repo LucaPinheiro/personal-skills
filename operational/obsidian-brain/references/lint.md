@@ -96,6 +96,33 @@ Check that `index.md` accurately reflects the actual wiki contents:
 Check that all pages use tags and entity types from `_meta/taxonomy.md`.
 Flag any custom tags that should either be added to taxonomy or normalized.
 
+### 8. Relation consistency
+
+Check the `## Relations` sections across all wiki pages:
+
+**a) Broken relation targets** — does the target page exist?
+```markdown
+- `wiki/entities/user-service.md` → [calls] [[Payment API]] — target page doesn't exist
+```
+
+**b) Invalid relation types** — is the type in `_meta/taxonomy.md`?
+```markdown
+- `wiki/concepts/auth-flow.md` uses relation type `triggers` — not in taxonomy
+```
+
+**c) Missing symmetry** — some relations imply a reverse:
+- If A `[contradicts]` B, then B should `[contradicts]` A
+- If A `[depends_on]` B, then B should `[used_by]` A
+- If A `[part_of]` B, the reverse is informational (no strict requirement)
+
+```markdown
+- `wiki/entities/auth-service.md` [contradicts] [[Old Spec]] — but Old Spec has no reverse relation
+```
+
+**d) Orphaned relations** — relations pointing to pages that were deleted.
+
+**Fix:** Create missing reverse relations. Fix invalid types. Remove orphaned entries.
+
 ## Output
 
 After running all checks, produce a summary:
@@ -112,12 +139,18 @@ After running all checks, produce a summary:
 | Missing pages | 2 | 2 |
 | Index drift | 1 | 1 |
 | Taxonomy | 0 | — |
+| Relations | 2 | 2 (symmetry) |
 
-**Total: 10 issues, 7 auto-fixable**
+**Total: 12 issues, 9 auto-fixable**
 ```
 
 Ask user: "Want me to fix the auto-fixable issues? The contradictions and orphan
 need your input."
+
+After fixing issues (or if no issues found), **regenerate the project context file**.
+Read `_meta/skills/context.md` and follow its process to update
+`projects/<project>/_context.md`. Lint findings (especially contradictions and
+high-fan-out entities) are valuable inputs for the context's "Non-Obvious Patterns" section.
 
 ## Log entry
 

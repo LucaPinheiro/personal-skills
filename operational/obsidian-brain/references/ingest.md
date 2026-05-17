@@ -63,10 +63,26 @@ updated: YYYY-MM-DD
 ---
 ```
 
+When creating or updating entity pages, also extract **typed relations** from the source.
+If the source says "the User Service calls the Auth Service", add a `## Relations` section:
+
+```markdown
+## Relations
+- [calls] [[Auth Service]]
+- [depends_on] [[Database Cluster]]
+- [implements] [[Business Rule: User Validation]]
+```
+
+Use relation types from `_meta/taxonomy.md`. Infer the type from context — pick the most
+specific type that fits. Fall back to `related_to` only when the relationship is genuinely unclear.
+
 ### 4. Update or create concept pages
 
 Same logic as entities, but for abstract concepts, themes, patterns.
 Write to `projects/<project>/wiki/concepts/<concept>.md`.
+
+Concept pages also get a `## Relations` section. Concepts frequently `extends`, `contradicts`,
+or `part_of` other concepts.
 
 ### 5. Update the project index
 
@@ -94,6 +110,13 @@ Update the wiki pages sections (concepts, entities) with any new pages.
 ## [YYYY-MM-DD] ingest | <project> | <source title>
 - <one-line summary>
 ```
+
+### 8. Regenerate project context
+
+After all pages are written, regenerate the project's compass file. Read
+`_meta/skills/context.md` and follow its process to update
+`projects/<project>/_context.md`. This ensures the context file always reflects
+the latest state — new key pages, updated link counts, freshly surfaced contradictions.
 
 ## Guidelines
 

@@ -11,21 +11,31 @@ The wiki is a compiled knowledge base — answers should draw from it, not re-de
 
 ## Process
 
-### 1. Read the project index
+### 1. Read the project context (fast orientation)
 
-Start with `projects/<project>/index.md` to understand what's available.
-Scan page titles and descriptions to identify relevant pages.
+Start with `projects/<project>/_context.md` if it exists (~200 tokens). This gives you:
+- The 5 most important pages (hub pages by link count)
+- Known contradictions and non-obvious patterns
+- Cross-references to related projects
 
-### 2. Read relevant pages
+This is often enough to identify which pages to read for the answer.
+
+### 2. Read the project index (if needed)
+
+If the context file doesn't point to relevant pages, read `projects/<project>/index.md`
+for the full catalog. Scan page titles and descriptions to identify relevant pages.
+
+### 3. Read relevant pages
 
 Open the wiki pages that seem relevant to the question. Follow `[[wikilinks]]`
-to find connected information. Read concept pages, entity pages, and source
-summaries as needed.
+and `## Relations` sections to find connected information. Typed relations are
+especially useful — `[depends_on]` and `[implements]` edges often reveal the
+exact pages you need.
 
 **Tiered retrieval** — don't read everything:
-- **Quick** (simple factual question): index → 1-2 pages → answer
-- **Standard** (analytical question): index → 3-5 pages → synthesize → answer
-- **Deep** (cross-cutting question): index → all related pages → raw sources if needed → comprehensive answer
+- **Quick** (simple factual question): context → 1-2 pages → answer
+- **Standard** (analytical question): context + index → 3-5 pages → synthesize → answer
+- **Deep** (cross-cutting question): context + index → all related pages → raw sources if needed → comprehensive answer
 
 ### 3. Synthesize the answer
 
@@ -35,7 +45,7 @@ Compose an answer that:
 - **Notes contradictions** — if different sources disagree, present both sides
 - **Suggests next steps** — if the question reveals a knowledge gap, suggest sources to investigate
 
-### 4. File valuable answers back into the wiki
+### 5. File valuable answers back into the wiki
 
 If the answer is a useful artifact (a comparison, an analysis, a connection that
 wasn't previously documented), offer to save it as a new wiki page:
@@ -46,7 +56,7 @@ wasn't previously documented), offer to save it as a new wiki page:
 
 This is how explorations compound in the knowledge base.
 
-### 5. Update the log
+### 6. Update the log
 
 ```markdown
 ## [YYYY-MM-DD] query | <short question summary>
