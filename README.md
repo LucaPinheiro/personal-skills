@@ -23,6 +23,8 @@ coding/                     # Application development skills
   langgraph-agent/          # LangGraph agent development
   prompt-engineering/       # Anthropic SDK / prompt design
   skill-creator/            # Skill authoring, testing, and optimization
+operational/                # Knowledge management and operational skills
+  obsidian-brain/           # LLM Wiki — Obsidian vault as AI knowledge base
 platform-engineering/       # Infrastructure / DevOps skills
   aws-cli/                  # AWS CLI v2 best practices
   docker-compose/           # Docker Compose for local dev
@@ -47,6 +49,12 @@ superpowers/                # Workflow and process skills (from Superpowers plug
 | [`dockerfile-instructions`](coding/dockerfile-instructions/SKILL.md) | Dockerfiles — multi-stage, BuildKit, multi-arch, distroless, per-language templates |
 | [`create-makefiles`](coding/create-makefiles/SKILL.md) | Makefiles — safe defaults, self-documenting help, per-language templates |
 | [`skill-creator`](coding/skill-creator/SKILL.md) | Create, test, benchmark, and optimize skills with eval framework |
+
+### Operational
+
+| Skill | Description |
+|-------|-------------|
+| [`obsidian-brain`](operational/obsidian-brain/SKILL.md) | LLM Wiki — scaffold Obsidian vaults as AI-maintained knowledge bases with ingest, query, lint, cross-link, status, and export operations |
 
 ### Platform Engineering
 
